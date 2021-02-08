@@ -4,7 +4,7 @@
   "description": "Post wall project created with MERN Stack, GraphQL, and Apollo Server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,8 @@
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
     "mongoose": "^5.11.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
