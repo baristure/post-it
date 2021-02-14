@@ -1,4 +1,4 @@
-const {ApolloServer} = require("apollo-server");
+const { ApolloServer } = require("apollo-server");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
@@ -11,6 +11,7 @@ mongoose.set("debug", true);
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => ({ req }),
 });
 
 // Connect to the database and run the server
