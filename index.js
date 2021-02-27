@@ -14,7 +14,7 @@ const server = new ApolloServer({
   resolvers,
   context: ({ req }) => ({ req ,pubsub }),
 });
-
+const PORT = process.env.port || 5000;
 // Connect to the database and run the server
 mongoose
   .connect(process.env.MONGO_CONN_STRING, {
@@ -24,8 +24,11 @@ mongoose
   })
   .then(() => {
     console.log("MongoDB database connection established successfully");
-    return server.listen({ port: 5000 });
+    return server.listen({ port: PORT });
   })
   .then((res) => {
     console.log(`Server is running at ${res.url}`);
+  })
+  .catch((err) => {
+    console.error(err);
   });

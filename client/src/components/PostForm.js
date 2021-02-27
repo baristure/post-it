@@ -17,8 +17,11 @@ const PostForm = () => {
       const data = proxy.readQuery({
         query: FETCH_POSTS_QUERY,
       });
-      data.getPosts = [result.data.createPost, ...data.getPosts];
-      proxy.writeQuery({ query: FETCH_POSTS_QUERY, data });
+      const new_post = result.data.createPost;
+      proxy.writeQuery({
+        query: FETCH_POSTS_QUERY,
+        data: { getPosts: [new_post, ...data.getPosts] }, // here you're using that var to write the cache
+      });
       values.body = "";
     },
   });

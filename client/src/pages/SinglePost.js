@@ -24,14 +24,15 @@ const SinglePost = (props) => {
 
   const [comment, setComment] = useState("");
 
-  const {
-    data: { getPost },
-  } = useQuery(FETCH_POST_QUERY, {
+  const { loading, data } = useQuery(FETCH_POST_QUERY, {
     variables: {
       postId,
     },
   });
-
+  let post;
+  if (!loading && data) {
+    post = data.getPost;
+  }
   const [submitComment] = useMutation(SUBMIT_COMMENT_MUTATION, {
     update() {
       setComment("");
@@ -48,7 +49,7 @@ const SinglePost = (props) => {
   }
 
   let postMarkup;
-  if (!getPost) {
+  if (!post) {
     postMarkup = <p>Loading post..</p>;
   } else {
     const {
@@ -60,7 +61,7 @@ const SinglePost = (props) => {
       likes,
       likeCount,
       commentCount,
-    } = getPost;
+    } = post;
 
     postMarkup = (
       <Grid>
