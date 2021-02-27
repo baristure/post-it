@@ -7,7 +7,7 @@ import PostCard from "../components/PostCard";
 import PostForm from "../components/PostForm";
 import { FETCH_POSTS_QUERY } from "../util/graphql";
 
-function Home() {
+const Home=()=> {
   const { user } = useContext(AuthContext);
   const {
     loading,
@@ -29,7 +29,7 @@ function Home() {
           <h1>Loading posts..</h1>
         ) : (
           <Transition.Group>
-            {posts &&
+            {posts !=null &&
               posts.map((post) => (
                 <Grid.Column key={post.id} style={{ marginBottom: 20 }}>
                   <PostCard post={post} />

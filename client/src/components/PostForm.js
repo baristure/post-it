@@ -6,7 +6,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { FETCH_POSTS_QUERY } from "../util/graphql";
 
-function PostForm() {
+const PostForm = () => {
   const { values, onChange, onSubmit } = useForm(createPostCallback, {
     body: "",
   });
@@ -52,7 +52,7 @@ function PostForm() {
       )}
     </>
   );
-}
+};
 const CREATE_POST_MUTATION = gql`
   mutation createPost($body: String!) {
     createPost(body: $body) {
