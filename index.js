@@ -14,7 +14,7 @@ const server = new ApolloServer({
   resolvers,
   context: ({ req }) => ({ req ,pubsub }),
 });
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 // Connect to the database and run the server
 mongoose
   .connect(process.env.MONGO_CONN_STRING, {
